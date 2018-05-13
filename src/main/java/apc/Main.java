@@ -13,11 +13,12 @@ public class Main
     final static Logger logger = LogManager.getLogger(Main.class);
     public static void main(String[] args)
     {
-        logger.trace("trace");
-        logger.debug("debug");
-        logger.info("info");
-        logger.error("error");
-        logger.fatal("fatal");
+        logger.trace("this is trace");
+        logger.debug("this is debug");
+        logger.info("this is info");
+        logger.warn("this is warn");
+        logger.error("this is error");
+        logger.fatal("this is fatal");
     }
 
 }
