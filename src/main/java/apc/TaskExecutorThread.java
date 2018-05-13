@@ -2,9 +2,17 @@
 package apc;
 
 import interfaces.TaskExecutorRunnable;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TaskExecutorThread implements TaskExecutorRunnable
 {
+    private final Queue<Task> taskQueue;
+    
+    public TaskExecutorThread()
+    {
+        taskQueue = new ConcurrentLinkedQueue();
+    }
 
         @Override
     public void run()
