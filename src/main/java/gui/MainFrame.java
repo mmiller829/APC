@@ -1,11 +1,19 @@
-
 package gui;
 
-public class MainFrame extends javax.swing.JFrame
+import interfaces.SocketStateDisplay;
+
+public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
 {
+
     public MainFrame()
     {
         initComponents();
+    }
+
+    @Override
+    public void updateSocketState()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @SuppressWarnings("unchecked")

@@ -8,5 +8,6 @@ public class GlobalVariables
     public static String internalAddress;
     public static String externalAddress;
     public static String externalPort;
+    public static String teminalType;
     
 }
