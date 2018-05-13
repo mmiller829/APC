@@ -1,12 +1,15 @@
 
 package apc;
 
+import enums.Command;
+
 public class SocketStateTask extends Task
 {
     private final SocketStateManager socketStateManager;
     
-    public SocketStateTask(SocketStateManager socketStateManager)
+    public SocketStateTask(Command command, SocketStateManager socketStateManager)
     {
+        super(command);
         this.socketStateManager = socketStateManager;
     }
 
