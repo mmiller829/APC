@@ -1,5 +1,8 @@
 package gui;
 
+import apc.SocketStateManager;
+import apc.Task;
+import apc.TaskFactory;
 import interfaces.SocketStateDisplay;
 
 public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
@@ -8,6 +11,27 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
     public MainFrame()
     {
         initComponents();
+
+    }
+
+    private void socketStateTaskThread()
+    {
+        SocketStateManager socketStateManager = new SocketStateManager();
+        socketStateManager.register(this);
+        final Task socketStateTask = TaskFactory.createSocketStateTask(socketStateManager);
+        
+        Thread thread = new Thread(new Runnable()
+        {
+
+            @Override
+            public void run()
+            {
+                // add task to execute every x seconds
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        thread.start();
+
     }
 
     @Override
