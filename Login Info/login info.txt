@@ -1,0 +1,7 @@
+username : Remote
+password: Testing-123
+
+Telnet: 73.30.120.221
+port: 6923
+
+outlet 4 only
