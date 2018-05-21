@@ -1,3 +1,6 @@
+/** These variables are for storing in a file
+ *  Set and use GlobalVariables in application
+ */
 
 package apc;
 
