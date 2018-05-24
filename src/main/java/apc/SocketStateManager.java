@@ -7,8 +7,7 @@ public class SocketStateManager
 {
     private SocketStateDisplay socketStateDisplay;
 
-    
-    public  void register(SocketStateDisplay socketStateDisplay)
+    public SocketStateManager(SocketStateDisplay socketStateDisplay)
     {
         this.socketStateDisplay = socketStateDisplay;
     }
