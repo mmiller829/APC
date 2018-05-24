@@ -1,6 +1,6 @@
 package gui;
 
-import javax.swing.JOptionPane;
+import javax.swing.JButton;
 
 public class LoginFrame extends javax.swing.JFrame
 {
@@ -11,7 +11,41 @@ public class LoginFrame extends javax.swing.JFrame
         setResizable(false);
         setLocationRelativeTo(null);
 
-        setVisible(true);
+    }
+
+    public String getUsername()
+    {
+        return usernameTextField.getText();
+    }
+
+    public char[] getPassword()
+    {
+        return passwordField.getPassword();
+    }
+
+    public String getLanAddress()
+    {
+        return lanAddressTextField.getText();
+    }
+
+    public JButton getLoginButton()
+    {
+        return loginButton;
+    }
+    
+    public void setUsernameFocus()
+    {
+        usernameTextField.requestFocus();
+    }
+    
+    public void setPasswordFocus()
+    {
+        passwordField.requestFocus();
+    }
+    
+    public void setLanAddressFocus()
+    {
+        lanAddressTextField.requestFocus();
     }
 
     @SuppressWarnings("unchecked")
@@ -55,13 +89,6 @@ public class LoginFrame extends javax.swing.JFrame
         jLabel7.setText("Fields with * are required");
 
         loginButton.setText("Log in");
-        loginButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                loginButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,7 +96,7 @@ public class LoginFrame extends javax.swing.JFrame
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -85,7 +112,8 @@ public class LoginFrame extends javax.swing.JFrame
                             .addComponent(wanAddresstextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(wanPortTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -145,29 +173,6 @@ public class LoginFrame extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_loginButtonActionPerformed
-    {//GEN-HEADEREND:event_loginButtonActionPerformed
-        if (usernameTextField.getText().length() == 0)
-        {
-            JOptionPane.showMessageDialog(this, "Please enter a username.", "Error", JOptionPane.ERROR_MESSAGE);
-            usernameTextField.requestFocus();
-        }
-        else if (passwordField.getText().length() == 0)
-        {
-            JOptionPane.showMessageDialog(this, "Please enter a password.", "Error", JOptionPane.ERROR_MESSAGE);
-            passwordField.requestFocus();
-        }
-        else if(lanAddressTextField.getText().length() == 0)
-        {
-            JOptionPane.showMessageDialog(this, "Please enter a lan address.", "Error", JOptionPane.ERROR_MESSAGE);
-            lanAddressTextField.requestFocus();
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(this, "Not Supported yet.", "Info", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_loginButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox jComboBox1;
