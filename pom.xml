@@ -11,6 +11,31 @@
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
     
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <groupId>jars</groupId>
+                            <artifactId>darcula</artifactId>
+                            <version>1.0.0</version>
+                            <packaging>jar</packaging>
+                            <file>${basedir}/libs/darcula-1.0.0.jar</file>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
     <dependencies>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -29,6 +54,13 @@
             <artifactId>commons-net</artifactId>
             <version>3.6</version>
         </dependency> 
+        
+        <dependency>
+            <groupId>jars</groupId>
+            <artifactId>darcula</artifactId>
+            <version>1.0.0</version>
+        </dependency> 
 
+       
     </dependencies>
 </project>
