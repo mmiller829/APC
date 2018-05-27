@@ -19,15 +19,10 @@ public class MainFrameController
         SocketStateManager socketStateManager = new SocketStateManager(mainFrame);
         final Task socketStateTask = TaskFactory.createSocketStateTask(socketStateManager);
 
-        Thread thread = new Thread(new Runnable()
+        Thread thread = new Thread(() ->
         {
-
-            @Override
-            public void run()
-            {
-                // add task to execute every x seconds
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
+            // add task to execute every x seconds
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         });
         thread.start();
 

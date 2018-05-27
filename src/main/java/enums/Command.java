@@ -3,9 +3,9 @@ package enums;
 public enum Command
 {
 
-    GETSOCKETSTATE(new String[1]);
+    GET_SOCKET_STATE(new String[1]);
 
-    private String[] commandSequence;
+    private final String[] commandSequence;
     Command(String[] commandSequence)
     {
         this.commandSequence = commandSequence;
