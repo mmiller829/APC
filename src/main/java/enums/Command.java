@@ -3,16 +3,16 @@ package enums;
 public enum Command
 {
 
-    GET_SOCKET_STATE(new String[1]);
+    GET_SOCKET_STATE("status");
 
-    private final String[] commandSequence;
-    Command(String[] commandSequence)
+    private final String command;
+    Command(String command)
     {
-        this.commandSequence = commandSequence;
+        this.command = command;
     }
     
-    public String[] getCommandSequence()
+    public String getCommand()
     {
-        return commandSequence;
+        return command;
     }
 }

@@ -16,6 +16,8 @@ public class SocketStateTask extends Task
     @Override
     public void execute()
     {
+        // send the status command
+        // read and parse the list of outlets
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

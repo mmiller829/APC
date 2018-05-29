@@ -14,8 +14,8 @@ public abstract class Task
     
     public abstract void execute();
     
-    public String[] getCommandSequence()
+    public String getCommand()
     {
-        return command.getCommandSequence();
+        return command.getCommand();
     }
 }
