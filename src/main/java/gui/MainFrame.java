@@ -10,70 +10,107 @@ import javax.swing.SwingUtilities;
 
 public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
 {
-    
+
     private final JTextField usernameTextField;
     private final JPasswordField passwordField;
     private final JTextField lanAddressTextField;
     private final JTextField wanAddressTextField;
     private final JTextField wanPortTextField;
-    
+
     public MainFrame(Component parent)
     {
         initComponents();
         usernameTextField = new JTextField();
         usernameTextField.setColumns(10);
-        usernameTextField.setToolTipText("Changes will be applied on next application startup");
+        usernameTextField.setToolTipText("Saved changes will be applied on next application startup");
         jMenu2.add(usernameTextField);
-        
+
         passwordField = new JPasswordField();
         passwordField.setColumns(10);
-        passwordField.setToolTipText("Changes will be applied on next application startup");
+        passwordField.setToolTipText("Saved changes will be applied on next application startup");
         jMenu3.add(passwordField);
-        
+
         lanAddressTextField = new JTextField();
         lanAddressTextField.setColumns(10);
-        lanAddressTextField.setToolTipText("Changes will be applied on next application startup");
+        lanAddressTextField.setToolTipText("Saved changes will be applied on next application startup");
         jMenu4.add(lanAddressTextField);
-        
+
         wanAddressTextField = new JTextField();
         wanAddressTextField.setColumns(10);
-        wanAddressTextField.setToolTipText("Changes will be applied on next application startup");
+        wanAddressTextField.setToolTipText("Saved changes will be applied on next application startup");
         jMenu5.add(wanAddressTextField);
-        
+
         wanPortTextField = new JTextField();
         wanPortTextField.setColumns(10);
-        wanPortTextField.setToolTipText("Changes will be applied on next application startup");
+        wanPortTextField.setToolTipText("Saved changes will be applied on next application startup");
         jMenu6.add(wanPortTextField);
-        
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(parent);
-        
+
     }
-    
+
     @Override
     public void updateSocketState()
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     public JMenuItem getExitMenuItem()
     {
         return exitMenuItem;
     }
-    
-    public void setConnectionMenuItems(String username, String password, String lanAddress, String wanAddress, String wanPort)
+
+    public JMenuItem getSaveChangesMenuItem()
+    {
+        return saveChangesMenuItem;
+    }
+
+    public JTextField getUsernameTextField()
+    {
+        return usernameTextField;
+    }
+
+    public JPasswordField getPasswordField()
+    {
+        return passwordField;
+    }
+
+    public JTextField getLanAddressTextField()
+    {
+        return lanAddressTextField;
+    }
+
+    public JTextField getWanAddressTextField()
+    {
+        return wanAddressTextField;
+    }
+
+    public JTextField getWanPortTextField()
+    {
+        return wanPortTextField;
+    }
+
+    public void setSaveChangesEnabled(boolean enabled)
     {
         SwingUtilities.invokeLater(() ->
         {
+            saveChangesMenuItem.setEnabled(enabled);
+        });
+    }
+
+    public void setConnectionMenuItems(String username, String password, String lanAddress, String wanAddress, String wanPort)
+    {
+
             usernameTextField.setText(username);
             passwordField.setText(password);
             lanAddressTextField.setText(lanAddress);
             wanAddressTextField.setText(wanAddress);
             wanPortTextField.setText(wanPort);
-        });
-        
+
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
@@ -87,6 +124,7 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        saveChangesMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -108,6 +146,10 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
         jMenu6.setText("WAN Port");
         jMenu1.add(jMenu6);
         jMenu1.add(jSeparator1);
+
+        saveChangesMenuItem.setText("Save Changes");
+        saveChangesMenuItem.setEnabled(false);
+        jMenu1.add(saveChangesMenuItem);
 
         exitMenuItem.setText("Exit");
         jMenu1.add(exitMenuItem);
@@ -140,5 +182,6 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenuItem saveChangesMenuItem;
     // End of variables declaration//GEN-END:variables
 }

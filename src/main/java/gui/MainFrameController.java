@@ -7,6 +7,8 @@ import apc.TaskFactory;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class MainFrameController
 {
@@ -19,11 +21,18 @@ public class MainFrameController
         this.mainFrame = mainFrame;
         this.connection = connection;
         
+        initListener(); 
     }
     
-    public void initListener()
+    private void initListener()
     {
         mainFrame.getExitMenuItem().addActionListener(e -> logout());
+        mainFrame.getSaveChangesMenuItem().addActionListener(e -> saveChanges());
+        mainFrame.getUsernameTextField().getDocument().addDocumentListener(new ConnectionMenuListener(mainFrame));
+        mainFrame.getPasswordField().getDocument().addDocumentListener(new ConnectionMenuListener(mainFrame));
+        mainFrame.getLanAddressTextField().getDocument().addDocumentListener(new ConnectionMenuListener(mainFrame));
+        mainFrame.getWanAddressTextField().getDocument().addDocumentListener(new ConnectionMenuListener(mainFrame));
+        mainFrame.getWanPortTextField().getDocument().addDocumentListener(new ConnectionMenuListener(mainFrame));
     }
 
     private void socketStateTaskThread()
@@ -40,6 +49,12 @@ public class MainFrameController
 
     }
     
+    private void saveChanges()
+    {
+        mainFrame.setSaveChangesEnabled(false);
+        // write to file
+    }
+    
     private void logout()
     {
         try
@@ -53,4 +68,31 @@ public class MainFrameController
         }
     }
 
+}
+
+class ConnectionMenuListener implements DocumentListener{
+
+    MainFrame mainFrame;
+    public ConnectionMenuListener(MainFrame mainFrame)
+    {
+        this.mainFrame = mainFrame;
+    }
+    
+    @Override
+    public void insertUpdate(DocumentEvent e)
+    {
+        mainFrame.setSaveChangesEnabled(true);
+    }
+
+    @Override
+    public void removeUpdate(DocumentEvent e)
+    {
+        mainFrame.setSaveChangesEnabled(true);
+    }
+
+    @Override
+    public void changedUpdate(DocumentEvent e)
+    {
+        // this event doesn't fire
+    }
 }

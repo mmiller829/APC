@@ -68,12 +68,11 @@ public class LoginFrameController
                         EventQueue.invokeLater(() ->
                         {
                             MainFrame mainFrame = new MainFrame(loginFrame);
-                            loginFrame.dispose();
+                            mainFrame.setConnectionMenuItems(username, password, lanAddress, wanAddress, wanPort);
 
                             MainFrameController mainFrameController = new MainFrameController(mainFrame, connection);
-                            mainFrameController.initListener();
 
-                            mainFrame.setConnectionMenuItems(username, password, lanAddress, wanAddress, wanPort);
+                            loginFrame.dispose();
 
                             mainFrame.setVisible(true);
                         });
