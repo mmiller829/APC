@@ -1,13 +1,15 @@
 package gui;
 
 import interfaces.SocketStateDisplay;
+import java.awt.Component;
 
 public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
 {
 
-    public MainFrame()
+    public MainFrame(Component parent)
     {
         initComponents();
+        setLocationRelativeTo(parent);
 
     }
 

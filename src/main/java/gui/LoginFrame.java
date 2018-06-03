@@ -32,17 +32,17 @@ public class LoginFrame extends javax.swing.JFrame
     {
         return loginButton;
     }
-    
+
     public void setUsernameFocus()
     {
         usernameTextField.requestFocus();
     }
-    
+
     public void setPasswordFocus()
     {
         passwordField.requestFocus();
     }
-    
+
     public void setLanAddressFocus()
     {
         lanAddressTextField.requestFocus();

@@ -99,6 +99,7 @@ public class Connection
     {
         send("logout\r");
         telnetClient.disconnect();
+        logger.info("disconnected from " + ipAddress);
     }
 
 }

@@ -85,7 +85,7 @@ public class ConnectionReceiveThread implements Runnable
     {
         if (!running)
         {
-            Thread thread = new Thread(this);
+            Thread thread = new Thread(this, "ConnectionReceiveThread");
             running = true;
             thread.start();
         }
