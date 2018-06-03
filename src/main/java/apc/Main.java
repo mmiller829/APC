@@ -18,8 +18,9 @@ public class Main
 
     final static Logger logger = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) throws UnsupportedLookAndFeelException
+    public static void main(String[] args) throws UnsupportedLookAndFeelException, LoginFailException
     {
+
         BasicLookAndFeel darcula = new DarculaLaf();
         UIManager.setLookAndFeel(darcula);
 
