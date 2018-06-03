@@ -22,22 +22,27 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
         initComponents();
         usernameTextField = new JTextField();
         usernameTextField.setColumns(10);
+        usernameTextField.setToolTipText("Changes will be applied on next application startup");
         jMenu2.add(usernameTextField);
         
         passwordField = new JPasswordField();
         passwordField.setColumns(10);
+        passwordField.setToolTipText("Changes will be applied on next application startup");
         jMenu3.add(passwordField);
         
         lanAddressTextField = new JTextField();
         lanAddressTextField.setColumns(10);
+        lanAddressTextField.setToolTipText("Changes will be applied on next application startup");
         jMenu4.add(lanAddressTextField);
         
         wanAddressTextField = new JTextField();
         wanAddressTextField.setColumns(10);
+        wanAddressTextField.setToolTipText("Changes will be applied on next application startup");
         jMenu5.add(wanAddressTextField);
         
         wanPortTextField = new JTextField();
         wanPortTextField.setColumns(10);
+        wanPortTextField.setToolTipText("Changes will be applied on next application startup");
         jMenu6.add(wanPortTextField);
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

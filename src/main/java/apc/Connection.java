@@ -15,8 +15,8 @@ import org.apache.logging.log4j.Logger;
 public class Connection
 {
 
-    private String ipAddress;
-    private int port;
+    private final String ipAddress;
+    private final int port;
 
     private final String TERMINALTYPE = "VT100";
     private TelnetClient telnetClient;
@@ -75,7 +75,7 @@ public class Connection
         while (!(string = readLine()).contains("APC>"))
         {
         }
-        System.out.println("success");
+        logger.info("Login is success");
     }
 
     public void send(String output) throws IOException

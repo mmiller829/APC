@@ -42,7 +42,6 @@ public class MainFrameController
     
     private void logout()
     {
-        System.out.println("made it here");
         try
         {
             connection.disconnect();
