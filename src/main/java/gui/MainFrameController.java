@@ -1,17 +1,29 @@
 package gui;
 
+import apc.Connection;
 import apc.SocketStateManager;
 import apc.Task;
 import apc.TaskFactory;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MainFrameController
 {
 
     private final MainFrame mainFrame;
+    private final Connection connection;
 
-    public MainFrameController(MainFrame mainFrame)
+    public MainFrameController(MainFrame mainFrame, Connection connection)
     {
         this.mainFrame = mainFrame;
+        this.connection = connection;
+        
+    }
+    
+    public void initListener()
+    {
+        mainFrame.getExitMenuItem().addActionListener(e -> logout());
     }
 
     private void socketStateTaskThread()
@@ -26,6 +38,20 @@ public class MainFrameController
         });
         thread.start();
 
+    }
+    
+    private void logout()
+    {
+        System.out.println("made it here");
+        try
+        {
+            connection.disconnect();
+            mainFrame.dispose();
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(MainFrameController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

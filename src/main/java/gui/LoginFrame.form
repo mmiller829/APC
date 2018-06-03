@@ -61,7 +61,7 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="passwordField" min="-2" pref="137" max="-2" attributes="0"/>
                               <Component id="lanAddressTextField" min="-2" pref="137" max="-2" attributes="0"/>
-                              <Component id="wanAddresstextField" min="-2" pref="137" max="-2" attributes="0"/>
+                              <Component id="wanAddressTextField" min="-2" pref="137" max="-2" attributes="0"/>
                               <Component id="wanPortTextField" min="-2" pref="137" max="-2" attributes="0"/>
                               <Component id="usernameTextField" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
                           </Group>
@@ -98,7 +98,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="wanAddresstextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="wanAddressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -142,7 +142,7 @@
             <Property name="text" type="java.lang.String" value="WAN address:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="wanAddresstextField">
+        <Component class="javax.swing.JTextField" name="wanAddressTextField">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>

@@ -27,6 +27,16 @@ public class LoginFrame extends javax.swing.JFrame
     {
         return lanAddressTextField.getText();
     }
+    
+    public String getWanAddress()
+    {
+        return wanAddressTextField.getText();
+    }
+    
+    public String getWanPort()
+    {
+        return wanPortTextField.getText();
+    }
 
     public JButton getLoginButton()
     {
@@ -61,7 +71,7 @@ public class LoginFrame extends javax.swing.JFrame
         jLabel3 = new javax.swing.JLabel();
         lanAddressTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        wanAddresstextField = new javax.swing.JTextField();
+        wanAddressTextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         wanPortTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -102,7 +112,7 @@ public class LoginFrame extends javax.swing.JFrame
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lanAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(wanAddresstextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(wanAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(wanPortTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -130,7 +140,7 @@ public class LoginFrame extends javax.swing.JFrame
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(wanAddresstextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(wanAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -174,7 +184,7 @@ public class LoginFrame extends javax.swing.JFrame
     private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField usernameTextField;
-    private javax.swing.JTextField wanAddresstextField;
+    private javax.swing.JTextField wanAddressTextField;
     private javax.swing.JTextField wanPortTextField;
     // End of variables declaration//GEN-END:variables
 }
