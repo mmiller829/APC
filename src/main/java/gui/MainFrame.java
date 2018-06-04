@@ -2,6 +2,7 @@ package gui;
 
 import interfaces.SocketStateDisplay;
 import java.awt.Component;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JPasswordField;
@@ -45,6 +46,10 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
         wanPortTextField.setToolTipText("Saved changes will be applied on next application startup");
         jMenu6.add(wanPortTextField);
 
+        ImageIcon icon = new ImageIcon(getClass().getResource("/images/APC-App-Icon.png"));
+        setIconImage(icon.getImage());
+        setTitle("APC 7902-pdu");
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(parent);
 
@@ -101,14 +106,11 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
 
     public void setConnectionMenuItems(String username, String password, String lanAddress, String wanAddress, String wanPort)
     {
-
-            usernameTextField.setText(username);
-            passwordField.setText(password);
-            lanAddressTextField.setText(lanAddress);
-            wanAddressTextField.setText(wanAddress);
-            wanPortTextField.setText(wanPort);
-
-
+        usernameTextField.setText(username);
+        passwordField.setText(password);
+        lanAddressTextField.setText(lanAddress);
+        wanAddressTextField.setText(wanAddress);
+        wanPortTextField.setText(wanPort);
     }
 
     @SuppressWarnings("unchecked")
@@ -147,10 +149,12 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
         jMenu1.add(jMenu6);
         jMenu1.add(jSeparator1);
 
+        saveChangesMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Save16.png"))); // NOI18N
         saveChangesMenuItem.setText("Save Changes");
         saveChangesMenuItem.setEnabled(false);
         jMenu1.add(saveChangesMenuItem);
 
+        exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Exit16.png"))); // NOI18N
         exitMenuItem.setText("Exit");
         jMenu1.add(exitMenuItem);
 

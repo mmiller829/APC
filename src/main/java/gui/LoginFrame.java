@@ -1,5 +1,6 @@
 package gui;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 
@@ -10,6 +11,11 @@ public class LoginFrame extends javax.swing.JFrame
     {
         initComponents();
         setResizable(false);
+
+        setTitle("APC 7902-pdu");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/images/APC-App-Icon.png"));
+        setIconImage(icon.getImage());
+
         setLocationRelativeTo(null);
 
     }
