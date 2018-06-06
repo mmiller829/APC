@@ -24,20 +24,11 @@ public class Main
         BasicLookAndFeel darcula = new DarculaLaf();
         UIManager.setLookAndFeel(darcula);
 
-        File file = new File(GlobalVariables.loginFileName);
-        if (!file.exists())
-        {
-            // create login frame
-            LoginFrame loginFrame = new LoginFrame();
-            LoginFrameController loginFrameController = new LoginFrameController(loginFrame);
-            loginFrameController.initListener();
-            loginFrame.setVisible(true);
-        }
-        else
-        {
-            // read file and log in
-        }
-
+        // create login frame
+        LoginFrame loginFrame = new LoginFrame();
+        LoginFrameController loginFrameController = new LoginFrameController(loginFrame);
+        loginFrameController.initListener();
+        loginFrame.setVisible(true);
     }
 
 }

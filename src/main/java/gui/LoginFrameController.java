@@ -6,7 +6,12 @@ import apc.LoginFailException;
 import apc.LoginFileManager;
 import apc.LoginVariables;
 import java.awt.EventQueue;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -23,7 +28,7 @@ public class LoginFrameController
     public LoginFrameController(LoginFrame loginFrame)
     {
         this.loginFrame = loginFrame;
-        loginFileManager = new LoginFileManager();
+        loginFileManager = loadLoginFileManager(GlobalVariables.loginFileName);
         isLoginRunning = false;
         initComboBox();
     }
@@ -145,7 +150,7 @@ public class LoginFrameController
     }
     
     /**
-     * Updates the ComboBox and adds entry to loginFileManager.
+     * Updates the ComboBox, adds entry to loginFileManager, and serializes to file.
      */
     public void addLoginEntry(String username, String lanAddress, String wanAddress, String wanPort)
     {
@@ -158,5 +163,44 @@ public class LoginFrameController
         
         // add to loginFileManager
         loginFileManager.add(username, lanAddress, wanAddress, wanPort);
+        
+        // serialize to file
+        saveLoginFileManager(GlobalVariables.loginFileName, loginFileManager);
+    }
+    
+    /**
+     * Returns deserialized LoginFileManager or a new LoginFileManager if it
+     * fails.
+     */
+    public LoginFileManager loadLoginFileManager(String filename)
+    {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename)))
+        {
+            return (LoginFileManager)in.readObject();
+        }
+        catch (IOException | ClassNotFoundException ex)
+        {
+            return new LoginFileManager();
+        }
+    }
+    
+    /**
+     * Returns true if serializing LoginFileManager is successful.
+     */
+    public boolean saveLoginFileManager(String filename, LoginFileManager loginFileManager)
+    {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename)))
+        {
+            out.writeObject(loginFileManager);
+            return true;
+        }
+        catch (FileNotFoundException ex)
+        {
+            return false;
+        }
+        catch (IOException ex)
+        {
+            return false;
+        }
     }
 }
