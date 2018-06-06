@@ -3,10 +3,13 @@ package gui;
 import apc.Connection;
 import apc.GlobalVariables;
 import apc.LoginFailException;
+import apc.LoginFileManager;
+import apc.LoginVariables;
 import java.awt.EventQueue;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import org.apache.commons.net.telnet.InvalidTelnetOptionException;
 
@@ -14,17 +17,33 @@ public class LoginFrameController
 {
 
     private final LoginFrame loginFrame;
+    private LoginFileManager loginFileManager;
     private boolean isLoginRunning;
 
     public LoginFrameController(LoginFrame loginFrame)
     {
         this.loginFrame = loginFrame;
+        loginFileManager = new LoginFileManager();
         isLoginRunning = false;
+        initComboBox();
     }
 
     public void initListener()
     {
         loginFrame.getLoginButton().addActionListener(e -> login());
+        loginFrame.getUsernameComboBox().addActionListener((e -> onComboBoxChange()));
+    }
+    
+    public void initComboBox()
+    {
+        JComboBox usernameComboBox = loginFrame.getUsernameComboBox();
+        usernameComboBox.removeAllItems();
+        for (String username : loginFileManager.getUsernames())
+        {
+            usernameComboBox.addItem(username);
+        }
+        
+        usernameComboBox.setSelectedIndex(-1);
     }
 
     public void login()
@@ -56,6 +75,8 @@ public class LoginFrameController
                     String lanAddress = loginFrame.getLanAddress();
                     String wanAddress = loginFrame.getWanAddress();
                     String wanPort = loginFrame.getWanPort();
+                    
+                    addLoginEntry(username, lanAddress, wanAddress, wanPort);
 
                     Connection connection = new Connection(lanAddress, GlobalVariables.port);
                     try
@@ -105,4 +126,37 @@ public class LoginFrameController
 
     }
 
+    /**
+     * Sets the LAN address, WAN address, and WAN port fields if the username is
+     * found in loginFileManager.
+     */
+    public void onComboBoxChange()
+    {
+        String username = loginFrame.getUsername();
+        
+        if (loginFileManager.contains(username))
+        {
+            LoginVariables login = loginFileManager.get(username);
+            loginFrame.setPassword("");
+            loginFrame.setLanAddress(login.getLanAddress());
+            loginFrame.setWanAddress(login.getWanAddress());
+            loginFrame.setWanPort(login.getWanPort());
+        }
+    }
+    
+    /**
+     * Updates the ComboBox and adds entry to loginFileManager.
+     */
+    public void addLoginEntry(String username, String lanAddress, String wanAddress, String wanPort)
+    {
+        // add to comboxbox if not already in loginFileManager
+        if (!loginFileManager.contains(username))
+        {
+            JComboBox usernameComboBox = loginFrame.getUsernameComboBox();
+            usernameComboBox.addItem(username);
+        }
+        
+        // add to loginFileManager
+        loginFileManager.add(username, lanAddress, wanAddress, wanPort);
+    }
 }

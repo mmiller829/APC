@@ -2,6 +2,7 @@ package gui;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.SwingUtilities;
 
 public class LoginFrame extends javax.swing.JFrame
@@ -51,6 +52,36 @@ public class LoginFrame extends javax.swing.JFrame
     public String getWanPort()
     {
         return wanPortTextField.getText();
+    }
+
+    public void setUsername(String username)
+    {
+        usernameComboBox.setSelectedItem(username);
+    }
+
+    public void setPassword(String password)
+    {
+        passwordField.setText(password);
+    }
+
+    public void setLanAddress(String lanAddress)
+    {
+        lanAddressTextField.setText(lanAddress);
+    }
+
+    public void setWanAddress(String wanAddress)
+    {
+        wanAddressTextField.setText(wanAddress);
+    }
+
+    public void setWanPort(String wanPort)
+    {
+        wanPortTextField.setText(wanPort);
+    }    
+
+    public JComboBox<String> getUsernameComboBox()
+    {
+        return usernameComboBox;
     }
 
     public JButton getLoginButton()
