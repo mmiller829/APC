@@ -66,5 +66,4 @@ public class LoginFileManager implements java.io.Serializable
     {
         return logins.containsKey(username);
     }
-    
 }

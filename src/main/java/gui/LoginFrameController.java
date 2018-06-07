@@ -22,7 +22,7 @@ public class LoginFrameController
 {
 
     private final LoginFrame loginFrame;
-    private LoginFileManager loginFileManager;
+    private final LoginFileManager loginFileManager;
     private boolean isLoginRunning;
 
     public LoginFrameController(LoginFrame loginFrame)
@@ -170,8 +170,7 @@ public class LoginFrameController
     }
     
     /**
-     * Returns deserialized LoginFileManager or a new LoginFileManager if it
-     * fails.
+     * Returns deserialized LoginFileManager or a new LoginFileManager if it fails.
      */
     private LoginFileManager loadLoginFileManager(String filename)
     {
