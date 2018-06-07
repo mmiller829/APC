@@ -43,6 +43,7 @@ public class LoginFrameController
     private void initComboBox()
     {
         JComboBox usernameComboBox = loginFrame.getUsernameComboBox();
+        
         usernameComboBox.removeAllItems();
         for (String username : loginFileManager.getUsernames())
         {
@@ -50,6 +51,11 @@ public class LoginFrameController
         }
         
         usernameComboBox.setSelectedIndex(-1);
+        loginFrame.setUsername("");
+        loginFrame.setPassword("");
+        loginFrame.setLanAddress("");
+        loginFrame.setWanAddress("");
+        loginFrame.setWanPort("");
     }
 
     private void login()

@@ -6,7 +6,6 @@ package apc;
 import com.bulenkov.darcula.DarculaLaf;
 import gui.LoginFrame;
 import gui.LoginFrameController;
-import java.io.File;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.basic.BasicLookAndFeel;
