@@ -3,10 +3,18 @@ package gui;
 import apc.Connection;
 import apc.GlobalVariables;
 import apc.LoginFailException;
+import apc.LoginFileManager;
+import apc.LoginVariables;
 import java.awt.EventQueue;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import org.apache.commons.net.telnet.InvalidTelnetOptionException;
 
@@ -14,20 +22,43 @@ public class LoginFrameController
 {
 
     private final LoginFrame loginFrame;
+    private final LoginFileManager loginFileManager;
     private boolean isLoginRunning;
 
     public LoginFrameController(LoginFrame loginFrame)
     {
         this.loginFrame = loginFrame;
+        loginFileManager = loadLoginFileManager(GlobalVariables.loginFileName);
         isLoginRunning = false;
+        initListener();
+        initComboBox();
     }
 
-    public void initListener()
+    private void initListener()
     {
         loginFrame.getLoginButton().addActionListener(e -> login());
+        loginFrame.getUsernameComboBox().addActionListener((e -> onComboBoxChange()));
+    }
+    
+    private void initComboBox()
+    {
+        JComboBox usernameComboBox = loginFrame.getUsernameComboBox();
+        
+        usernameComboBox.removeAllItems();
+        for (String username : loginFileManager.getUsernames())
+        {
+            usernameComboBox.addItem(username);
+        }
+        
+        usernameComboBox.setSelectedIndex(-1);
+        loginFrame.setUsername("");
+        loginFrame.setPassword("");
+        loginFrame.setLanAddress("");
+        loginFrame.setWanAddress("");
+        loginFrame.setWanPort("");
     }
 
-    public void login()
+    private void login()
     {
         if (!isLoginRunning)
         {
@@ -56,6 +87,8 @@ public class LoginFrameController
                     String lanAddress = loginFrame.getLanAddress();
                     String wanAddress = loginFrame.getWanAddress();
                     String wanPort = loginFrame.getWanPort();
+                    
+                    addLoginEntry(username, lanAddress, wanAddress, wanPort);
 
                     Connection connection = new Connection(lanAddress, GlobalVariables.port);
                     try
@@ -105,4 +138,75 @@ public class LoginFrameController
 
     }
 
+    /**
+     * Sets the LAN address, WAN address, and WAN port fields if the username is
+     * found in loginFileManager.
+     */
+    private void onComboBoxChange()
+    {
+        String username = loginFrame.getUsername();
+        
+        if (loginFileManager.contains(username))
+        {
+            LoginVariables login = loginFileManager.get(username);
+            loginFrame.setPassword("");
+            loginFrame.setLanAddress(login.getLanAddress());
+            loginFrame.setWanAddress(login.getWanAddress());
+            loginFrame.setWanPort(login.getWanPort());
+        }
+    }
+    
+    /**
+     * Updates the ComboBox, adds entry to loginFileManager, and serializes to file.
+     */
+    private void addLoginEntry(String username, String lanAddress, String wanAddress, String wanPort)
+    {
+        // add to comboxbox if not already in loginFileManager
+        if (!loginFileManager.contains(username))
+        {
+            JComboBox usernameComboBox = loginFrame.getUsernameComboBox();
+            usernameComboBox.addItem(username);
+        }
+        
+        // add to loginFileManager
+        loginFileManager.add(username, lanAddress, wanAddress, wanPort);
+        
+        // serialize to file
+        saveLoginFileManager(GlobalVariables.loginFileName, loginFileManager);
+    }
+    
+    /**
+     * Returns deserialized LoginFileManager or a new LoginFileManager if it fails.
+     */
+    private LoginFileManager loadLoginFileManager(String filename)
+    {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename)))
+        {
+            return (LoginFileManager)in.readObject();
+        }
+        catch (IOException | ClassNotFoundException ex)
+        {
+            return new LoginFileManager();
+        }
+    }
+    
+    /**
+     * Returns true if serializing LoginFileManager is successful.
+     */
+    private boolean saveLoginFileManager(String filename, LoginFileManager loginFileManager)
+    {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename)))
+        {
+            out.writeObject(loginFileManager);
+            return true;
+        }
+        catch (FileNotFoundException ex)
+        {
+            return false;
+        }
+        catch (IOException ex)
+        {
+            return false;
+        }
+    }
 }

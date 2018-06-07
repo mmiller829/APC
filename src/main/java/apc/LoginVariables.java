@@ -1,16 +1,38 @@
-/** These variables are for storing in a file
- *  Set and use GlobalVariables in application
- */
 
 package apc;
 
-public class LoginVariables
+public class LoginVariables implements java.io.Serializable
 {
-    public static String userName;
-    public static String password;
-    public static String lanAddress;
-    public static String wanAddress;
-    public static String wanPort;
-    public static String teminalType;
+    private final String username;
+    private final String lanAddress;
+    private final String wanAddress;
+    private final String wanPort;
     
+    public LoginVariables(String username, String lanAddress, String wanAddress, String wanPort)
+    {
+        this.username = username;
+        this.lanAddress = lanAddress;
+        this.wanAddress = wanAddress;
+        this.wanPort = wanPort;
+    }
+
+    public String getUsername()
+    {
+        return username;
+    }
+
+    public String getLanAddress()
+    {
+        return lanAddress;
+    }
+
+    public String getWanAddress()
+    {
+        return wanAddress;
+    }
+
+    public String getWanPort()
+    {
+        return wanPort;
+    }
 }

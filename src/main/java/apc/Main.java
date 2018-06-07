@@ -6,7 +6,6 @@ package apc;
 import com.bulenkov.darcula.DarculaLaf;
 import gui.LoginFrame;
 import gui.LoginFrameController;
-import java.io.File;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.basic.BasicLookAndFeel;
@@ -24,20 +23,10 @@ public class Main
         BasicLookAndFeel darcula = new DarculaLaf();
         UIManager.setLookAndFeel(darcula);
 
-        File file = new File(GlobalVariables.loginFileName);
-        if (!file.exists())
-        {
-            // create login frame
-            LoginFrame loginFrame = new LoginFrame();
-            LoginFrameController loginFrameController = new LoginFrameController(loginFrame);
-            loginFrameController.initListener();
-            loginFrame.setVisible(true);
-        }
-        else
-        {
-            // read file and log in
-        }
-
+        // create login frame
+        LoginFrame loginFrame = new LoginFrame();
+        LoginFrameController loginFrameController = new LoginFrameController(loginFrame);
+        loginFrame.setVisible(true);
     }
 
 }

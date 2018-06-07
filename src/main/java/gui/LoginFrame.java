@@ -2,6 +2,7 @@ package gui;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.SwingUtilities;
 
 public class LoginFrame extends javax.swing.JFrame
@@ -22,7 +23,15 @@ public class LoginFrame extends javax.swing.JFrame
 
     public String getUsername()
     {
-        return usernameTextField.getText();
+        String selectedItem = (String)usernameComboBox.getSelectedItem();
+        if (selectedItem == null)
+        {
+            return "";
+        }
+        else
+        {
+            return selectedItem;
+        }
     }
 
     public char[] getPassword()
@@ -45,6 +54,36 @@ public class LoginFrame extends javax.swing.JFrame
         return wanPortTextField.getText();
     }
 
+    public void setUsername(String username)
+    {
+        usernameComboBox.setSelectedItem(username);
+    }
+
+    public void setPassword(String password)
+    {
+        passwordField.setText(password);
+    }
+
+    public void setLanAddress(String lanAddress)
+    {
+        lanAddressTextField.setText(lanAddress);
+    }
+
+    public void setWanAddress(String wanAddress)
+    {
+        wanAddressTextField.setText(wanAddress);
+    }
+
+    public void setWanPort(String wanPort)
+    {
+        wanPortTextField.setText(wanPort);
+    }    
+
+    public JComboBox<String> getUsernameComboBox()
+    {
+        return usernameComboBox;
+    }
+
     public JButton getLoginButton()
     {
         return loginButton;
@@ -52,7 +91,7 @@ public class LoginFrame extends javax.swing.JFrame
 
     public void setUsernameFocus()
     {
-        usernameTextField.requestFocus();
+        usernameComboBox.requestFocus();
     }
 
     public void setPasswordFocus()
@@ -75,12 +114,11 @@ public class LoginFrame extends javax.swing.JFrame
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        usernameTextField = new javax.swing.JTextField();
+        usernameComboBox = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
@@ -96,6 +134,8 @@ public class LoginFrame extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("*Username:");
+
+        usernameComboBox.setEditable(true);
 
         jLabel2.setText("*Password:");
 
@@ -123,35 +163,32 @@ public class LoginFrame extends javax.swing.JFrame
                     .addComponent(activityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(38, 38, 38)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lanAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(wanAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(wanPortTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(loginButton)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                            .addComponent(lanAddressTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                            .addComponent(wanAddressTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                            .addComponent(wanPortTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                            .addComponent(usernameComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(loginButton)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(usernameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -209,7 +246,7 @@ public class LoginFrame extends javax.swing.JFrame
     private javax.swing.JTextField lanAddressTextField;
     private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordField;
-    private javax.swing.JTextField usernameTextField;
+    private javax.swing.JComboBox<String> usernameComboBox;
     private javax.swing.JTextField wanAddressTextField;
     private javax.swing.JTextField wanPortTextField;
     // End of variables declaration//GEN-END:variables
