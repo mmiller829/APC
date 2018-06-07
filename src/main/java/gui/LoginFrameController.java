@@ -30,6 +30,7 @@ public class LoginFrameController
         this.loginFrame = loginFrame;
         loginFileManager = loadLoginFileManager(GlobalVariables.loginFileName);
         isLoginRunning = false;
+        initListener();
         initComboBox();
     }
 

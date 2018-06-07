@@ -27,7 +27,6 @@ public class Main
         // create login frame
         LoginFrame loginFrame = new LoginFrame();
         LoginFrameController loginFrameController = new LoginFrameController(loginFrame);
-        loginFrameController.initListener();
         loginFrame.setVisible(true);
     }
 
