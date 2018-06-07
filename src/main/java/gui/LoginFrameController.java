@@ -33,13 +33,13 @@ public class LoginFrameController
         initComboBox();
     }
 
-    public void initListener()
+    private void initListener()
     {
         loginFrame.getLoginButton().addActionListener(e -> login());
         loginFrame.getUsernameComboBox().addActionListener((e -> onComboBoxChange()));
     }
     
-    public void initComboBox()
+    private void initComboBox()
     {
         JComboBox usernameComboBox = loginFrame.getUsernameComboBox();
         usernameComboBox.removeAllItems();
@@ -51,7 +51,7 @@ public class LoginFrameController
         usernameComboBox.setSelectedIndex(-1);
     }
 
-    public void login()
+    private void login()
     {
         if (!isLoginRunning)
         {
@@ -135,7 +135,7 @@ public class LoginFrameController
      * Sets the LAN address, WAN address, and WAN port fields if the username is
      * found in loginFileManager.
      */
-    public void onComboBoxChange()
+    private void onComboBoxChange()
     {
         String username = loginFrame.getUsername();
         
@@ -152,7 +152,7 @@ public class LoginFrameController
     /**
      * Updates the ComboBox, adds entry to loginFileManager, and serializes to file.
      */
-    public void addLoginEntry(String username, String lanAddress, String wanAddress, String wanPort)
+    private void addLoginEntry(String username, String lanAddress, String wanAddress, String wanPort)
     {
         // add to comboxbox if not already in loginFileManager
         if (!loginFileManager.contains(username))
@@ -172,7 +172,7 @@ public class LoginFrameController
      * Returns deserialized LoginFileManager or a new LoginFileManager if it
      * fails.
      */
-    public LoginFileManager loadLoginFileManager(String filename)
+    private LoginFileManager loadLoginFileManager(String filename)
     {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename)))
         {
@@ -187,7 +187,7 @@ public class LoginFrameController
     /**
      * Returns true if serializing LoginFileManager is successful.
      */
-    public boolean saveLoginFileManager(String filename, LoginFileManager loginFileManager)
+    private boolean saveLoginFileManager(String filename, LoginFileManager loginFileManager)
     {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename)))
         {
