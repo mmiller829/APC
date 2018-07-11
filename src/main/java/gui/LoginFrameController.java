@@ -3,6 +3,8 @@ package gui;
 import apc.Connection;
 import apc.GlobalVariables;
 import apc.LoginFailException;
+import apc.LoginFileManager;
+import apc.LoginProfile;
 import java.awt.EventQueue;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -63,12 +65,18 @@ public class LoginFrameController
                         loginFrame.setActivity("Connecting to " + lanAddress);
                         connection.connect();
                         connection.login(username, password);
+                        
+                        LoginProfile loginProfile = new LoginProfile(username, password, lanAddress, wanAddress, wanPort);
+                        GlobalVariables.loginProfilesManager.add(loginProfile);
+                        GlobalVariables.loginProfilesManager.setStartup(loginProfile);
+                        LoginFileManager.saveProfiles();
 
                         // create main frame when login succeeds
                         EventQueue.invokeLater(() ->
                         {
                             MainFrame mainFrame = new MainFrame(loginFrame);
-                            mainFrame.setConnectionMenuItems(username, password, lanAddress, wanAddress, wanPort);
+                            mainFrame.setStatusMenuItems(username, password, lanAddress, wanAddress, wanPort);
+                            mainFrame.setProfilesMenuItems(username, password, lanAddress, wanAddress, wanPort);
 
                             MainFrameController mainFrameController = new MainFrameController(mainFrame, connection);
 

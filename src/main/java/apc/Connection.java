@@ -58,17 +58,22 @@ public class Connection
 
     public void login(String username, String password) throws IOException, LoginFailException
     {
+        logger.info("Logging in with " + username + " " + password);
+        
         username += "\r";
         password += " -c\r";
         send(username);
         send(password);
+        
+        
 
         readLine();
         readLine();
         String string = readLine();
 
-        if (!string.contains("American Power Conversion"))
+        if (!string.contains("American"))
         {
+            logger.error(string);
             throw new LoginFailException();
         }
 
