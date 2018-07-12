@@ -65,7 +65,7 @@ public class LoginFrameController
                         loginFrame.setActivity("Connecting to " + lanAddress);
                         connection.connect();
                         connection.login(username, password);
-                        
+
                         LoginProfile loginProfile = new LoginProfile(username, password, lanAddress, wanAddress, wanPort);
                         GlobalVariables.loginProfilesManager.add(loginProfile);
                         GlobalVariables.loginProfilesManager.setStartup(loginProfile);
@@ -88,9 +88,15 @@ public class LoginFrameController
                     }
                     catch (IOException | InvalidTelnetOptionException ex)
                     {
-                        loginFrame.setActivity("");
-                        JOptionPane.showMessageDialog(loginFrame, "Connection Failed", "Error", JOptionPane.ERROR_MESSAGE);
-
+                        if (wanAddress.length() != 0 && wanPort.length() != 0)
+                        {
+                            loginWan();
+                        }
+                        else
+                        {
+                            loginFrame.setActivity("");
+                            JOptionPane.showMessageDialog(loginFrame, "Connection Failed", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
                     }
                     catch (LoginFailException ex)
                     {
@@ -110,7 +116,62 @@ public class LoginFrameController
             });
             thread.start();
         }
+    }
 
+    private void loginWan()
+    {
+        // for somerease can't put this code in the catch
+        String username = loginFrame.getUsername();
+        String password = new String(loginFrame.getPassword());
+        String lanAddress = loginFrame.getLanAddress();
+        String wanAddress = loginFrame.getWanAddress();
+        String wanPort = loginFrame.getWanPort();
+
+        Connection connection = new Connection(wanAddress, Integer.parseInt(wanPort));
+        try
+        {
+            loginFrame.setActivity("Connecting to " + wanAddress);
+            connection.connect();
+            connection.login(username, password);
+
+            LoginProfile loginProfile = new LoginProfile(username, password, lanAddress, wanAddress, wanPort);
+            GlobalVariables.loginProfilesManager.add(loginProfile);
+            GlobalVariables.loginProfilesManager.setStartup(loginProfile);
+            LoginFileManager.saveProfiles();
+
+            // create main frame when login succeeds
+            EventQueue.invokeLater(() ->
+            {
+                MainFrame mainFrame = new MainFrame(loginFrame);
+                mainFrame.setStatusMenuItems(username, password, lanAddress, wanAddress, wanPort);
+                mainFrame.setProfilesMenuItems(username, password, lanAddress, wanAddress, wanPort);
+
+                MainFrameController mainFrameController = new MainFrameController(mainFrame, connection);
+
+                loginFrame.dispose();
+
+                mainFrame.setVisible(true);
+            });
+
+        }
+        catch (IOException | InvalidTelnetOptionException ex)
+        {
+            loginFrame.setActivity("");
+            JOptionPane.showMessageDialog(loginFrame, "Connection Failed", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        catch (LoginFailException ex)
+        {
+            loginFrame.setActivity("");
+            JOptionPane.showMessageDialog(loginFrame, "Login Failed", "Error", JOptionPane.ERROR_MESSAGE);
+            try
+            {
+                connection.disconnect();
+            }
+            catch (IOException ex1)
+            {
+                Logger.getLogger(LoginFrameController.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        }
     }
 
 }
