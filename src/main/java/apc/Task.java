@@ -1,13 +1,12 @@
 
 package apc;
 
-import enums.Command;
 
 public abstract class Task
 {
-    private final Command command;
+    private final String command;
     
-    public Task(Command command)
+    public Task(String command)
     {
         this.command = command;
     }
@@ -16,6 +15,6 @@ public abstract class Task
     
     public String getCommand()
     {
-        return command.getCommand();
+        return command;
     }
 }

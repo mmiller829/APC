@@ -20,9 +20,9 @@ public class Connection
 
     private final String TERMINALTYPE = "VT100";
     private TelnetClient telnetClient;
-    private ConnectionReceiveThread connectionReceiveThread;
     private OutputStream outputStream;
     private PrintWriter printWriter;
+    private InputStream inputStream;
 
     private final Logger logger = LogManager.getLogger(Connection.class);
 
@@ -46,11 +46,10 @@ public class Connection
 
         telnetClient.connect(ipAddress, port);
 
-        connectionReceiveThread = new ConnectionReceiveThread(this);
-        connectionReceiveThread.start();
-
         outputStream = telnetClient.getOutputStream();
         printWriter = new PrintWriter(outputStream);
+
+        inputStream = telnetClient.getInputStream();
 
         logger.info("Connected to " + ipAddress);
 
@@ -59,19 +58,17 @@ public class Connection
     public void login(String username, String password) throws IOException, LoginFailException
     {
         logger.info("Logging in with " + username + " " + password);
-        
+
         username += "\r";
         password += " -c\r";
         send(username);
         send(password);
-        
-        
 
         readLine();
         readLine();
         String string = readLine();
 
-        if (!string.contains("American"))
+        if (!string.contains("Amer"))
         {
             logger.error(string);
             throw new LoginFailException();
@@ -85,19 +82,55 @@ public class Connection
 
     public void send(String output) throws IOException
     {
+        logger.debug("sending " + output);
         printWriter.print(output);
         printWriter.flush();
-
     }
 
     public String readLine() throws IOException
     {
-        return connectionReceiveThread.getCurrentLine();
+        StringBuilder line = new StringBuilder();
+
+        byte[] buffer = new byte[1024];
+        int bytesRead;
+
+        while ((bytesRead = inputStream.read(buffer)) > 0)
+        {
+
+            String input = new String(buffer, 0, bytesRead);
+
+            line.append(input);
+            System.out.println(input);
+            if (line.toString().contains("\r"))
+            {
+                break;
+            }
+
+        }
+        return line.toString();
     }
 
-    public InputStream getInputStream()
+    public String readResponse() throws IOException
     {
-        return telnetClient.getInputStream();
+        StringBuilder line = new StringBuilder();
+
+        byte[] buffer = new byte[1024];
+        int bytesRead;
+
+        while ((bytesRead = inputStream.read(buffer)) > 0)
+        {
+
+            String input = new String(buffer, 0, bytesRead);
+
+            line.append(input);
+            System.out.println(input);
+            if (line.toString().contains("APC>"))
+            {
+                break;
+            }
+
+        }
+        return line.toString();
     }
 
     public void disconnect() throws IOException

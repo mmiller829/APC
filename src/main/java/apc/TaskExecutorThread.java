@@ -1,4 +1,3 @@
-
 package apc;
 
 import interfaces.TaskExecutorRunnable;
@@ -6,41 +5,47 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TaskExecutorThread implements TaskExecutorRunnable
 {
+
     private final ConcurrentLinkedQueue<Task> taskQueue;
-    
+    private volatile boolean running = false;
+
     public TaskExecutorThread()
     {
         taskQueue = new ConcurrentLinkedQueue();
     }
 
-        @Override
+    @Override
     public void run()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    @Override
-    public void add(Task task)
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        while (running && !taskQueue.isEmpty())
+        {
+            Task task = taskQueue.remove();
+            task.execute();
+        }
+        running = false;
     }
 
     @Override
-    public void notifyStart()
+    public void add(Task task)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        taskQueue.add(task);
     }
 
     @Override
     public void start()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (!running)
+        {
+            Thread thread = new Thread(this, "Thread executor");
+            running = true;
+            thread.start();
+        }
     }
 
     @Override
     public void stop()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        running = false;
     }
-    
+
 }
