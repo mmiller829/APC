@@ -13,7 +13,7 @@ public class LoginFrame extends javax.swing.JFrame
         setResizable(false);
 
         setTitle("APC 7902-pdu");
-        ImageIcon icon = new ImageIcon(getClass().getResource("/images/APC-App-Icon.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/APC-App-Icon.png"));
         setIconImage(icon.getImage());
 
         setLocationRelativeTo(null);

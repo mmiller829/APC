@@ -9,12 +9,11 @@ import apc.Task;
 import apc.TaskExecutorThread;
 import apc.TaskFactory;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JCheckBox;
@@ -31,7 +30,7 @@ public class MainFrameController
     private final Connection connection;
     private boolean hidePassword = true;
     private final TaskExecutorThread taskThread;
-    private ArrayList<Integer> selectedSockets;
+    private final ArrayList<Integer> selectedSockets;
 
     public MainFrameController(MainFrame mainFrame, Connection connection)
     {
@@ -311,10 +310,12 @@ public class MainFrameController
         if (e.getStateChange() == 1)
         {
             selectedSockets.add(number);
+            Collections.sort(selectedSockets);
         }
         else
         {
             selectedSockets.remove(number);
+            Collections.sort(selectedSockets);
         }
     }
 
@@ -324,6 +325,7 @@ public class MainFrameController
         {
             connection.disconnect();
             mainFrame.dispose();
+            System.exit(0);
         }
         catch (IOException ex)
         {

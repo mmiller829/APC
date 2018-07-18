@@ -14,4 +14,10 @@
                 <exec.executable>java</exec.executable>
             </properties>
         </action>
+        <action>
+            <actionName>clean</actionName>
+            <packagings>
+                <packaging>*</packaging>
+            </packagings>
+        </action>
     </actions>

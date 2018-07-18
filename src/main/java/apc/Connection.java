@@ -100,7 +100,6 @@ public class Connection
             String input = new String(buffer, 0, bytesRead);
 
             line.append(input);
-            System.out.println(input);
             if (line.toString().contains("\r"))
             {
                 break;
@@ -123,7 +122,6 @@ public class Connection
             String input = new String(buffer, 0, bytesRead);
 
             line.append(input);
-            System.out.println(input);
             if (line.toString().contains("APC>"))
             {
                 break;

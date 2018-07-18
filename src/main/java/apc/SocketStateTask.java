@@ -11,7 +11,7 @@ public class SocketStateTask extends Task
     private final SocketStateManager socketStateManager;
     private final Connection connection;
     private StringBuilder builder;
-    private ArrayList<Socket> sockets;
+    private final ArrayList<Socket> sockets;
     private final Logger logger = LogManager.getLogger(SocketStateTask.class);
 
     public SocketStateTask(String command, SocketStateManager socketStateManager, Connection connection)

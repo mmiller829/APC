@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class SocketStateManager
 {
-    private SocketStateDisplay socketStateDisplay;
+    private final SocketStateDisplay socketStateDisplay;
 
     public SocketStateManager(SocketStateDisplay socketStateDisplay)
     {

@@ -9,13 +9,11 @@ import interfaces.SocketStateDisplay;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -107,7 +105,7 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
 
         jMenu10.add(profilesList);
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/images/APC-App-Icon.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/APC-App-Icon.png"));
         setIconImage(icon.getImage());
         setTitle("APC 7902-pdu");
 
@@ -131,14 +129,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket1Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket1Image.setIcon(icon);
 
                             }
@@ -168,14 +166,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket2Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket2Image.setIcon(icon);
                                 break;
                             }
@@ -205,14 +203,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket3Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket3Image.setIcon(icon);
                                 break;
                             }
@@ -242,14 +240,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket4Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket4Image.setIcon(icon);
                                 break;
                             }
@@ -278,14 +276,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket5Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket5Image.setIcon(icon);
                                 break;
                             }
@@ -315,14 +313,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket6Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket6Image.setIcon(icon);
                                 break;
                             }
@@ -352,14 +350,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket7Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket7Image.setIcon(icon);
                                 break;
                             }
@@ -389,14 +387,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket8Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket8Image.setIcon(icon);
                                 break;
                             }
@@ -426,14 +424,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket9Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket9Image.setIcon(icon);
                                 break;
                             }
@@ -463,14 +461,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket10Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket10Image.setIcon(icon);
                                 break;
                             }
@@ -500,14 +498,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket11Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket11Image.setIcon(icon);
                                 break;
                             }
@@ -537,14 +535,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket12Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket12Image.setIcon(icon);
                                 break;
                             }
@@ -574,14 +572,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket13Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket13Image.setIcon(icon);
                                 break;
                             }
@@ -611,14 +609,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket14Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket14Image.setIcon(icon);
                                 break;
                             }
@@ -648,14 +646,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket15Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket15Image.setIcon(icon);
                                 break;
                             }
@@ -685,14 +683,14 @@ public class MainFrame extends javax.swing.JFrame implements SocketStateDisplay
                         {
                             case "ON":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/greenoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/greenoutlet.png"));
                                 socket16Image.setIcon(icon);
 
                                 break;
                             }
                             case "OFF":
                             {
-                                ImageIcon icon = new ImageIcon(getClass().getResource("/images/redoutlet.png"));
+                                ImageIcon icon = new ImageIcon(getClass().getResource("/Images/redoutlet.png"));
                                 socket16Image.setIcon(icon);
                                 break;
                             }
